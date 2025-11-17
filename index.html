@@ -766,7 +766,23 @@
                 slides.forEach(slide => observer.observe(slide));
             }
         });
+        document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".slider-wrapper");
+    const slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    function autoSlide() {
+        index = (index + 1) % slides.length;
+        slider.scrollTo({
+            left: slides[index].offsetLeft,
+            behavior: "smooth"
+        });
+    }
+
+    setInterval(autoSlide, 4000); // every 4 seconds
+});
     </script>
 </body>
 
 </html>
+
