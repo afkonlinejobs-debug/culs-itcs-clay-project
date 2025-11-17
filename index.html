@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Clay Heritage of Dhamrai | Traditional Bangladesh Pottery</title>
+    <!-- Technical SEO & Accessibility preparation -->
+    <meta name="description" content="Discover the age-old tradition and resilient community of the Kumars (potters) in Dhamrai, Bangladesh. Explore their crafts, lifestyle, and heritage.">
+    <link rel="canonical" href="[YOUR_PROJECT_DOMAIN]/index.html">
+    
+    <!-- Microformat Prep: Using hCard for the regional entity -->
+    <meta name="author" class="vcard" content="Project Team: [Author Names]">
+    
+    <!-- Project Requirement: Information in the header about student work -->
+    <meta name="project-info" content="This client-side web presentation is a student group project for teaching purposes only.">
+
+    <style>
+        /* =================================================================== */
+        /* 1. Global Setup & Variables (Ensuring WCAG Contrast and Typography) */
+        /* =================================================================== */
+        
+        :root {
+            /* WCAG Colors (Strong Contrast is Key for Accessibility) */
+            --color-terracotta: #A04000;      /* Primary Accent (Clay Brown) */
+            --color-ochre: #FFC300;           /* Secondary Accent (Golden Yellow) */
+            --color-dark-slate: #2C3E50;      /* Dark Text (Excellent contrast against light BG) */
+            --color-light-bg: #FDF9F3;        /* Light Paper Background */
+            --color-off-white: #FFFFFF;
+            
+            --font-serif: 'Times New Roman', serif;
+            --font-sans: 'Arial', sans-serif;
+
+            --spacing-unit: 1.5rem;
+            --container-max-width: 1200px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Add smooth scroll behavior for JS navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-dark-slate);
+            background-color: var(--color-light-bg);
+            line-height: 1.7;
+        }
+
+        /* Skip link for keyboard navigation (WCAG 2.1 lvl A) */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-ochre);
+            color: var(--color-dark-slate);
+            padding: 8px;
+            z-index: 1000;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+        h2 { font-size: 2.2rem; margin-top: 1.5rem; }
+        h3 { font-size: 1.5rem; }
+
+        /* Buttons & Links */
+        .button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 50px; /* Highly rounded */
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        .button.primary {
+            background-color: var(--color-terracotta);
+            color: var(--color-off-white);
+            border-color: var(--color-terracotta);
+        }
+        .button.primary:hover {
+            background-color: #8c3800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button.secondary {
+            background-color: transparent;
+            color: var(--color-terracotta);
+            border-color: var(--color-terracotta);
+        }
+        .button.secondary:hover {
+            background-color: var(--color-terracotta);
+            color: var(--color-off-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .section-padding { padding: 4rem 1rem; }
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* =================================================================== */
+        /* 2. FLEXBOX & GRID Implementation (Project Requirement) */
+        /* =================================================================== */
+        
+        /* Flex for Navigation and Card Rows (1D Layouts) */
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: var(--spacing-unit);
+        }
+
+        /* Grid for the Header/Footer (Simple 2D Layouts) */
+        .grid-header, .grid-footer {
+            display: grid;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* Grid for the Hero and Complex Sections (Advanced 2D Layouts) */
+        .grid-feature {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* =================================================================== */
+        /* 3. Header & Navigation (FLEX-based) */
+        /* =================================================================== */
+        
+        header {
+            background-color: var(--color-terracotta);
+            color: var(--color-off-white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .grid-header {
+            /* Mobile Default: Logo on one row, Menu button on another (auto-flow) */
+            grid-template-columns: 1fr auto; 
+        }
+
+        .logo a {
+            color: var(--color-off-white);
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .logo a:hover { opacity: 0.9; }
+
+        .nav-links {
+            list-style: none;
+            display: none; /* Hidden by default (Mobile menu) */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-dark-slate);
+            flex-direction: column;
+            padding: 1rem 0;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        .nav-links.active {
+            display: flex; /* Show when active */
+        }
+        .nav-links li a {
+            color: var(--color-off-white);
+            text-decoration: none;
+            padding: 0.75rem var(--spacing-unit);
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .nav-links li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--color-off-white);
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        /* =================================================================== */
+        /* 4. Hero Section (CORRECTION: Now a CSS Scroll Snap Slider) */
+        /* =================================================================== */
+
+        #hero {
+            /* Remove all direct styling from the main container */
+            padding: 0;
+            position: relative; /* For positioning the new nav dots */
+            z-index: 1;
+        }
+
+        /* The wrapper that scrolls */
+        .slider-wrapper {
+            display: flex;
+            overflow-x: auto;
+            /* This is the core of the CSS slider */
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            /* Hide scrollbar for a cleaner look */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .slider-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        /* Each individual slide */
+        .slide {
+            /* 1. Sizing: Take 100% width, don't shrink/grow */
+            flex: 0 0 100%;
+            scroll-snap-align: start; /* Snap to the start of this slide */
+
+            /* 2. Styling (moved from the old #hero) */
+            color: var(--color-off-white);
+            padding: 5rem 1rem;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+            /* 3. Background & Overlay */
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+            z-index: 1;
+        }
+        /* Dark overlay for text contrast (WCAG) */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: -1;
+        }
+
+        /* Individual slide backgrounds */
+        .slide[data-slide="1"] {
+            background-image: url('https://placehold.co/1200x600/A04000/FFFFFF?text=Potter\'s+Wheel');
+        }
+        .slide[data-slide="2"] {
+            background-image: url('https://placehold.co/1200x600/FFC300/2C3E50?text=Finished+Clay+Pots');
+        }
+        .slide[data-slide="3"] {
+            background-image: url('https://placehold.co/1200x600/2C3E50/FFFFFF?text=Village+Workshop');
+        }
+
+        .slide h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .slide p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        /* Slider Navigation Dots (JS Enhanced) */
+        .slider-nav {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 10;
+        }
+        .slider-nav button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            padding: 0;
+            transition: background-color 0.3s;
+        }
+        /* Active dot style */
+        .slider-nav button[aria-current="true"] {
+            background-color: var(--color-off-white);
+        }
+
+        /* =================================================================== */
+        /* 5. Featured Cards (FLEX-based) */
+        /* =================================================================== */
+
+        #featured-sections {
+            background-color: var(--color-off-white);
+            padding: 4rem 1rem;
+        }
+        
+        .card-container {
+            justify-content: center; /* Center cards horizontally */
+        }
+
+        .feature-card {
+            background: var(--color-light-bg);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            /* Default: Take full width on mobile */
+            flex: 1 1 100%; 
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card h3 {
+            color: var(--color-terracotta);
+            margin-top: 0.5rem;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--color-ochre);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* =================================================================== */
+        /* 6. Process Section (GRID-based) */
+        /* =================================================================== */
+
+        #pottery-process {
+            background-color: #f5f5f5;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: var(--spacing-unit);
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        .process-step-icon {
+            min-width: 50px;
+            height: 50px;
+            background-color: var(--color-ochre);
+            color: var(--color-dark-slate);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* =================================================================== */
+        /* 7. Footer (GRID-based) */
+        /* =================================================================== */
+
+        footer {
+            background-color: var(--color-dark-slate);
+            color: var(--color-off-white);
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        .grid-footer {
+            grid-template-columns: 1fr; /* Mobile default */
+            text-align: center;
+        }
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-nav a {
+            color: var(--color-ochre);
+            text-decoration: none;
+        }
+        .project-info {
+            margin-top: 1rem;
+            color: #ccc;
+        }
+
+        /* =================================================================== */
+        /* 8. Media Queries (Fully Responsive Design - 3 Levels) */
+        /* =================================================================== */
+
+        /* Tablet View (600px+) */
+        @media (min-width: 600px) {
+            
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+
+            /* Grid: Footer layout starts spreading out */
+            .grid-footer {
+                grid-template-columns: 1fr 1fr; /* Two columns */
+                text-align: left;
+            }
+            .project-info {
+                text-align: right;
+                margin-top: 0;
+            }
+            
+            /* Flex: Featured cards move to two columns */
+            .feature-card {
+                flex: 1 1 calc(50% - var(--spacing-unit)); /* 2 columns */
+            }
+
+            /* Grid: Process section in 2 columns */
+            .grid-process-steps {
+                grid-template-columns: 1fr 1fr; 
+            }
+        }
+
+        /* Desktop View (1024px+) */
+        @media (min-width: 1024px) {
+
+            h1 { font-size: 4rem; }
+            
+            /* Grid: Header is now a horizontal FLEX structure (using GRID for columns) */
+            .grid-header {
+                grid-template-columns: auto 1fr auto;
+                justify-content: space-between;
+            }
+            
+            /* Navigation: Show full desktop menu */
+            .menu-toggle {
+                display: none; 
+            }
+            nav {
+                display: flex;
+                justify-content: flex-end; /* Push links to the right */
+            }
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background: none;
+                box-shadow: none;
+            }
+            .nav-links li a {
+                padding: 0.5rem 1rem;
+            }
+
+            /* Flex: Featured cards move to three columns */
+            .feature-card {
+                flex: 1 1 calc(33.333% - var(--spacing-unit)); /* 3 columns */
+            }
+
+            /* Grid: Footer layout in 3 columns */
+            .grid-footer {
+                grid-template-columns: 1fr 2fr 1fr; 
+            }
+            .footer-nav ul {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WCAG 2.1: Skip to main content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- WAI-ARIA Role: Banner / Site Header -->
+    <header role="banner">
+        <div class="container grid-header">
+            <div class="logo">
+                <a href="index.html">Dhamrai Clay Heritage</a>
+            </div>
+            
+            <!-- WAI-ARIA Role: Main Navigation -->
+            <nav role="navigation" aria-label="Main Navigation">
+                <ul id="main-menu-list" class="nav-links">
+                    <li><a href="meet_potters.html">Meet the Potters</a></li>
+                    <li><a href="gallery_shop.html">Gallery & Shop</a></li>
+                    <li><a href="plan_visit.html">Plan Your Visit</a></li>
+                    <li><a href="contact_support.html">Contact & Support</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu-list">
+                <!-- Simple SVG icon for hamburger menu -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- WAI-ARIA Role: Main Content -->
+    <main role="main" id="main-content">
+
+        <!-- Hero Section: Attract and summarize -->
+        <!-- CORRECTION: Converted to a slideable carousel -->
+        <section id="hero" role="region" aria-roledescription="carousel" aria-label="Introduction to Dhamrai Pottery">
+            
+            <div class="slider-wrapper">
+                <!-- Slide 1 -->
+                <div class="slide" data-slide="1" role="group" aria-label="Slide 1 of 3">
+                    <h1>The Clay That Tells Bangladesh's Story</h1>
+                    <p>Welcome to Kakran, Dhamrai. Explore the ancient art of the Kumars, their evolving livelihood, and the beauty of traditional Bangladeshi pottery.</p>
+                    <a href="plan_visit.html" class="button primary">Plan Your Visit & Workshop</a>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide" data-slide="2" role="group" aria-label="Slide 2 of 3">
+                    <h1>Preserving an Ancient Craft</h1>
+                    <p>Our mission is to support the regional development of the Pal community by connecting their art with the world.</p>
+                    <a href="meet_potters.html" class="button primary">Meet the Artisans</a>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide" data-slide="3" role="group" aria-label="Slide 3 of 3">
+                    <h1>Authentic. Handmade. Timeless.</h1>
+                    <p>Browse the gallery for unique, handmade terracotta pieces, from traditional *Doi Shora* to modern décor.</p>
+                    <a href="gallery_shop.html" class="button primary">Shop the Collection</a>
+                </div>
+            </div>
+
+            <!-- JS-powered Navigation Dots -->
+            <div class="slider-nav" role="tablist" aria-label="Slider Navigation">
+                <!-- Dots will be inserted here by JavaScript -->
+            </div>
+
+        </section>
+
+        <!-- Featured Sections: Demonstrates FLEX layout for quick navigation -->
+        <section id="featured-sections" class="section-padding">
+            <div class="container text-center">
+                <h2>Discover the Pillars of Our Heritage</h2>
+                <div class="card-container flex-row">
+                    <!-- Feature Card 1 -->
+                    <article class="feature-card" aria-labelledby="card-title-1">
+                        <span class="feature-icon">🏺</span>
+                        <h3 id="card-title-1">The Art & Process</h3>
+                        <p>Learn about the traditional wheel, the meticulous shaping, and the firing process that turns clay into life.</p>
+                        <a href="meet_potters.html#process" class="button secondary">View Steps</a>
+                    </article>
+                    
+                    <!-- Feature Card 2 -->
+                    <article class="feature-card" aria-labelledby="card-title-2">
+                        <span class="feature-icon">🏘️</span>
+                        <h3 id="card-title-2">Meet the Kumars</h3>
+                        <p>Get to know the families of the Pal community who have kept this centuries-old tradition alive against all odds.</p>
+                        <a href="meet_potters.html#community" class="button secondary">Read Stories</a>
+                    </article>
+                    
+                    <!-- Feature Card 3 (Prepared for AJAX integration for dynamic content) -->
+                    <article class="feature-card api-placeholder" aria-labelledby="card-title-3">
+                        <span class="feature-icon">🛍️</span>
+                        <h3 id="card-title-3">Shop the Collection</h3>
+                        <p>Browse our digital marketplace featuring handmade idols, *doi shora*, and unique terracotta art.</p>
+                        <a href="gallery_shop.html" class="button primary">Visit Gallery</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pottery Process Overview: Demonstrates GRID layout for content -->
+        <section id="pottery-process" class="section-padding">
+            <div class="container">
+                <h2 class="text-center">The Journey from Earth to Art</h2>
+                <div class="grid-feature grid-process-steps">
+                    <!-- Step 1: Collection -->
+                    <div class="process-step">
+                        <span class="process-step-icon" aria-hidden="true">1</span>
+                        <div>
+                            <h3>Clay Preparation</h3>
+                            <p>Careful selection and kneading of the high-quality local alluvial clay to ensure perfect consistency for shaping.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2: Throwing -->
+                    <div class="process-step">
+                        <span class="process-step-icon" aria-hidden="true">2</span>
+                        <div>
+                            <h3>Shaping on the Wheel</h3>
+                            <p>The potters' manual wheel, an inheritance of skill, is used to throw the clay into traditional forms and modern designs.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3: Drying -->
+                    <div class="process-step">
+                        <span class="process-step-icon" aria-hidden="true">3</span>
+                        <div>
+                            <h3>Sun Drying & Decoration</h3>
+                            <p>The pots are naturally dried under the Bangladesh sun, followed by intricate decoration and painting by the women of the village.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4: Firing -->
+                    <div class="process-step">
+                        <span class="process-step-icon" aria-hidden="true">4</span>
+                        <div>
+                            <h3>The Firing Kiln</h3>
+                            <p>The final, crucial step: firing the pieces in traditional, manually operated kilns to achieve durability and the distinct terracotta color.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical SEO/Microformat Prep Section (Using a GEO microformat placeholder) -->
+        <section id="location-info" class="container section-padding text-center" role="region" aria-label="Geographical Location">
+            <h2>Our Location</h2>
+            <p>Kakran is located in Dhamrai Upazila, easily accessible from Dhaka. We invite you to witness the craft firsthand.</p>
+            <div class="geo-microformat">
+                <!-- Microformat Requirement 1: GEO (Geolocation) -->
+                <span class="geo" aria-label="Geographic Coordinates of Dhamrai Pottery Village">
+                    <abbr title="Latitude" class="latitude">23.90</abbr>, 
+                    <abbr title="Longitude" class="longitude">90.23</abbr>
+                </span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- WAI-ARIA Role: Site Footer -->
+    <footer role="contentinfo">
+        <div class="container grid-footer">
+            <div class="footer-branding">
+                <!-- Microformat Requirement 2: hCard (Contact Information) -->
+                <p class="vcard">
+                    <span class="fn org">Dhamrai Clay Heritage Project</span>
+                    <br>
+                    <span class="adr">Kakran Kumar Para, Nayarhat, <span class="locality">Dhamrai</span>, <span class="region">Dhaka</span>, <span class="country-name">Bangladesh</span></span>
+                    <br>
+                    <span class="tel">+880 [Placeholder]</span>
+                </p>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Credits & Sources</a></li>
+                    <li><a href="#">Support the Potters</a></li>
+                </ul>
+            </div>
+            <div class="project-info">
+                <p class="project-disclaimer">
+                    <small>Client-Side Project 2025/26</small><br>
+                    <small>By Students for Teaching Purposes Only.</small><br>
+                    <small>Authors: [Your Group Members' Names Here]</small>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =================================================================== -->
+    <!-- 9. JavaScript (Menu Toggle + NEW Slider Logic) -->
+    <!-- =================================================================== -->
+    <script>
+        // Set up the Hamburger Menu Toggle functionality (Accessibility: ARIA controls)
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. Hamburger Menu Logic ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            function toggleMenu() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                navLinks.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // --- 2. AJAX Preparation Placeholder ---
+            function loadDynamicContent() {
+                const placeholder = document.querySelector('.api-placeholder p');
+                if (!placeholder) return; // Only run on index.html
+                
+                const loadingMessage = "Loading real-time event details...";
+                placeholder.textContent = loadingMessage;
+                
+                // Simulate an AJAX call (ready for next semester's fetch())
+                setTimeout(() => {
+                    const dynamicContent = "Event: Traditional Craft Fair, Dec 10th-12th!";
+                    placeholder.textContent = dynamicContent;
+                }, 1500);
+            }
+            loadDynamicContent();
+
+            // --- 3. NEW: Hero Slider Logic ---
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+            const sliderNav = document.querySelector('.slider-nav');
+            const slides = document.querySelectorAll('.slide');
+
+            if (sliderWrapper && slides.length > 0) {
+                // Create navigation dots
+                slides.forEach((slide, index) => {
+                    const dot = document.createElement('button');
+                    dot.setAttribute('role', 'tab');
+                    dot.setAttribute('aria-label', `Go to Slide ${index + 1}`);
+                    dot.setAttribute('aria-controls', `slide-${index + 1}`); // Assumes slides have IDs, but good for semantics
+                    
+                    // Add click event to scroll to the slide
+                    dot.addEventListener('click', () => {
+                        // Find the target slide's horizontal position
+                        const targetSlide = slides[index];
+                        sliderWrapper.scrollLeft = targetSlide.offsetLeft;
+                    });
+                    
+                    sliderNav.appendChild(dot);
+                });
+
+                // Set the first dot as active
+                if (sliderNav.firstChild) {
+                    sliderNav.firstChild.setAttribute('aria-current', 'true');
+                }
+
+                // Update active dot based on scroll position (Modern: IntersectionObserver)
+                // This is very efficient and meets the "Fast webpage" requirement
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Find the corresponding dot
+                            const slideIndex = Array.from(slides).indexOf(entry.target);
+                            
+                            // Remove active state from all dots
+                            sliderNav.querySelectorAll('button').forEach(dot => {
+                                dot.setAttribute('aria-current', 'false');
+                            });
+                            
+                            // Add active state to the current dot
+                            if (sliderNav.children[slideIndex]) {
+                                sliderNav.children[slideIndex].setAttribute('aria-current', 'true');
+                            }
+                        }
+                    });
+                }, { 
+                    root: sliderWrapper, // Observe within the scrolling container
+                    threshold: 0.5 // Trigger when 50% of the slide is visible
+                });
+
+                // Observe all slides
+                slides.forEach(slide => observer.observe(slide));
+            }
+        });
+    </script>
+</body>
+</html>

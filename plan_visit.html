@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Visit to Kakran, Dhamrai | Tourism Guide</title>
+    <!-- Technical SEO & Accessibility preparation -->
+    <meta name="description" content="Detailed guide on how to reach Kakran, Dhamrai. Information on accommodation, transport, and booking a hands-on pottery workshop.">
+    <link rel="canonical" href="[YOUR_PROJECT_DOMAIN]/plan_visit.html">
+    
+    <!-- Microformat Prep: Using hCard for the regional entity -->
+    <meta name="author" class="vcard" content="Project Team: [Author Names]">
+    
+    <!-- Project Requirement: Information in the header about student work -->
+    <meta name="project-info" content="This client-side web presentation is a student group project for teaching purposes only.">
+
+    <style>
+        /* [INCLUDED STYLES FROM index.html START] */
+        /* =================================================================== */
+        /* 1. Global Setup & Variables (Ensuring WCAG Contrast and Typography) */
+        /* =================================================================== */
+        
+        :root {
+            /* WCAG Colors (Strong Contrast is Key for Accessibility) */
+            --color-terracotta: #A04000;      /* Primary Accent (Clay Brown) */
+            --color-ochre: #FFC300;           /* Secondary Accent (Golden Yellow) */
+            --color-dark-slate: #2C3E50;      /* Dark Text (Excellent contrast against light BG) */
+            --color-light-bg: #FDF9F3;        /* Light Paper Background */
+            --color-off-white: #FFFFFF;
+            
+            --font-serif: 'Times New Roman', serif;
+            --font-sans: 'Arial', sans-serif;
+
+            --spacing-unit: 1.5rem;
+            --container-max-width: 1200px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-dark-slate);
+            background-color: var(--color-light-bg);
+            line-height: 1.7;
+        }
+
+        /* Skip link for keyboard navigation (WCAG 2.1 lvl A) */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-ochre);
+            color: var(--color-dark-slate);
+            padding: 8px;
+            z-index: 1000;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+        h2 { font-size: 2.2rem; margin-top: 1.5rem; }
+        h3 { font-size: 1.5rem; }
+
+        /* Buttons & Links */
+        .button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 50px; /* Highly rounded */
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        .button.primary {
+            background-color: var(--color-terracotta);
+            color: var(--color-off-white);
+            border-color: var(--color-terracotta);
+        }
+        .button.primary:hover {
+            background-color: #8c3800;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .button.secondary {
+            background-color: transparent;
+            color: var(--color-terracotta);
+            border-color: var(--color-terracotta);
+        }
+        .button.secondary:hover {
+            background-color: var(--color-terracotta);
+            color: var(--color-off-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .section-padding { padding: 4rem 1rem; }
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* =================================================================== */
+        /* 2. FLEXBOX & GRID Implementation (Project Requirement) */
+        /* =================================================================== */
+        
+        /* Flex for Navigation and Card Rows (1D Layouts) */
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: var(--spacing-unit);
+        }
+
+        /* Grid for the Header/Footer (Simple 2D Layouts) */
+        .grid-header, .grid-footer {
+            display: grid;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* Grid for the Hero and Complex Sections (Advanced 2D Layouts) */
+        .grid-feature {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Plan Your Visit Specific Styles */
+        #travel-info {
+            background-color: var(--color-off-white);
+        }
+        
+        /* GRID for travel columns */
+        .grid-travel-details {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr; /* Mobile default */
+        }
+        
+        /* Workshop Form Styling (AJAX/Server-Side Prep) */
+        #workshop-form {
+            background-color: #f5f5f5;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        #workshop-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--color-terracotta);
+        }
+        #workshop-form input[type="text"],
+        #workshop-form input[type="email"],
+        #workshop-form input[type="date"],
+        #workshop-form select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        /* =================================================================== */
+        /* 3. Header & Navigation (FLEX-based) */
+        /* =================================================================== */
+        
+        header {
+            background-color: var(--color-terracotta);
+            color: var(--color-off-white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .grid-header {
+            /* Mobile Default: Logo on one row, Menu button on another (auto-flow) */
+            grid-template-columns: 1fr auto; 
+        }
+
+        .logo a {
+            color: var(--color-off-white);
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .logo a:hover { opacity: 0.9; }
+
+        .nav-links {
+            list-style: none;
+            display: none; /* Hidden by default (Mobile menu) */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-dark-slate);
+            flex-direction: column;
+            padding: 1rem 0;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        .nav-links.active {
+            display: flex; /* Show when active */
+        }
+        .nav-links li a {
+            color: var(--color-off-white);
+            text-decoration: none;
+            padding: 0.75rem var(--spacing-unit);
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .nav-links li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--color-off-white);
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        /* Style for current page link (Accessibility contrast) */
+        .nav-links a[aria-current="page"] {
+            background-color: var(--color-ochre);
+            color: var(--color-dark-slate);
+            font-weight: bold;
+        }
+
+        /* =================================================================== */
+        /* 4. Hero Section (Simple Page Banner) */
+        /* =================================================================== */
+        #page-banner {
+            background-color: var(--color-terracotta);
+            color: var(--color-off-white);
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        #page-banner h1 {
+            font-size: 3rem;
+        }
+
+        /* =================================================================== */
+        /* 7. Footer (GRID-based) */
+        /* =================================================================== */
+
+        footer {
+            background-color: var(--color-dark-slate);
+            color: var(--color-off-white);
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+        .grid-footer {
+            grid-template-columns: 1fr; /* Mobile default */
+            text-align: center;
+        }
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-nav a {
+            color: var(--color-ochre);
+            text-decoration: none;
+        }
+        .project-info {
+            margin-top: 1rem;
+            color: #ccc;
+        }
+
+        /* =================================================================== */
+        /* 8. Media Queries (Fully Responsive Design - 3 Levels) */
+        /* =================================================================== */
+
+        /* Tablet View (600px+) */
+        @media (min-width: 600px) {
+            
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+
+            /* Grid: Footer layout starts spreading out */
+            .grid-footer {
+                grid-template-columns: 1fr 1fr; /* Two columns */
+                text-align: left;
+            }
+            .project-info {
+                text-align: right;
+                margin-top: 0;
+            }
+            
+            /* Grid: Travel info columns */
+            .grid-travel-details {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Desktop View (1024px+) */
+        @media (min-width: 1024px) {
+
+            h1 { font-size: 4rem; }
+            
+            /* Grid: Header is now a horizontal FLEX structure (using GRID for columns) */
+            .grid-header {
+                grid-template-columns: auto 1fr auto;
+                justify-content: space-between;
+            }
+            
+            /* Navigation: Show full desktop menu */
+            .menu-toggle {
+                display: none; 
+            }
+            nav {
+                display: flex;
+                justify-content: flex-end; /* Push links to the right */
+            }
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background: none;
+                box-shadow: none;
+            }
+            .nav-links li a {
+                padding: 0.5rem 1rem;
+            }
+
+            /* Grid: Footer layout in 3 columns */
+            .grid-footer {
+                grid-template-columns: 1fr 2fr 1fr; 
+            }
+            .footer-nav ul {
+                justify-content: flex-start;
+            }
+
+             /* Grid: Workshop form and map side-by-side */
+            .grid-workshop-map {
+                grid-template-columns: 1.5fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WCAG 2.1: Skip to main content link -->
+    <a href="#main-content" class="skip-link">Skip to travel information</a>
+
+    <!-- WAI-ARIA Role: Banner / Site Header -->
+    <header role="banner">
+        <div class="container grid-header">
+            <div class="logo">
+                <a href="index.html">Dhamrai Clay Heritage</a>
+            </div>
+            
+            <!-- WAI-ARIA Role: Main Navigation -->
+            <nav role="navigation" aria-label="Main Navigation">
+                <ul id="main-menu-list" class="nav-links">
+                    <li><a href="meet_potters.html">Meet the Potters</a></li>
+                    <li><a href="gallery_shop.html">Gallery & Shop</a></li>
+                    <li><a href="plan_visit.html" aria-current="page">Plan Your Visit</a></li>
+                    <li><a href="contact_support.html">Contact & Support</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu-list">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- WAI-ARIA Role: Main Content -->
+    <main role="main" id="main-content">
+        <section id="page-banner">
+            <h1>Create Your Bangladesh Heritage Experience</h1>
+            <p>Practical information for planning your authentic visit to Kakran Potter's Village.</p>
+        </section>
+
+        <!-- Travel Logistics (GRID for structured info) -->
+        <section id="travel-info" class="section-padding container">
+            <h2 class="text-center">Getting to Kakran, Dhamrai</h2>
+            <div class="grid-travel-details">
+                <div>
+                    <h3>From Dhaka (Bus/Car)</h3>
+                    <p>Kakran is approximately 45km northwest of Dhaka. Take the Dhaka-Aricha Highway toward Dhamrai. The journey usually takes **1.5 to 2 hours** depending on traffic.</p>
+                    <p><strong>Recommended:</strong> Hire a private car or use local bus services to Nayarhat Bazaar, followed by a short rickshaw ride to the village.</p>
+                </div>
+                <div>
+                    <h3>Accommodation & Safety</h3>
+                    <p>There are limited formal lodging options in Kakran village itself. We recommend staying in nearby Dhamrai town or returning to Dhaka in the evening.</p>
+                    <p><strong>Safety Note:</strong> Always be respectful of the community's culture and ask permission before taking photographs of the potters or their homes.</p>
+                </div>
+                <div class="full-width">
+                     <!-- Microformat Prep: Using hReview for an event/experience -->
+                    <h3 class="hreview" aria-labelledby="review-heading">Recommended Local Tour Guide</h3>
+                    <span id="review-heading" class="summary">Highly professional guide for pottery tours.</span>
+                    <span class="rating">
+                        <abbr class="value" title="5">⭐⭐⭐⭐⭐</abbr>
+                    </span>
+                    <p class="reviewer">Reviewed by: Heritage Travel Bangladesh</p>
+                    <p class="description">"A fantastic way to experience the *Kumars*' lifestyle firsthand. The guide arranged a perfect hands-on session."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workshop Booking (GRID/Form) -->
+        <section id="workshop-booking" class="section-padding container" role="form" aria-labelledby="form-heading">
+            <h2 id="form-heading" class="text-center">Book Your Pottery Workshop</h2>
+            <div class="grid-feature grid-workshop-map">
+                <form id="workshop-form" action="[PLACEHOLDER_FOR_SERVER_SIDE_API]" method="POST">
+                    <p>Spend a morning with a master potter! Workshop includes clay preparation, wheel demonstration, and hand-shaping practice.</p>
+                    
+                    <div>
+                        <label for="name">Your Name (Required)</label>
+                        <input type="text" id="name" name="visitor_name" required aria-required="true">
+                    </div>
+                    
+                    <div>
+                        <label for="email">Email (Required for Confirmation)</label>
+                        <input type="email" id="email" name="visitor_email" required aria-required="true">
+                    </div>
+
+                    <div>
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="preferred_date">
+                    </div>
+                    
+                    <div>
+                        <label for="participants">Number of Participants (1-10)</label>
+                        <select id="participants" name="num_participants">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3-5</option>
+                            <option value="6">6-10 (Group)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="button primary">Request Booking</button>
+                    <p style="margin-top: 1rem; font-size: 0.9em;">**Preparation for Server-Side:** This form is ready to be connected to a backend API endpoint for processing the booking request.</p>
+                </form>
+
+                <!-- Placeholder for Map API (Third-Party API Prep) -->
+                <div id="map-placeholder" style="background-color: #ddd; height: 100%; min-height: 350px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                    <p class="text-center">Map API Integration Placeholder <br>(Ready for next semester: Google Maps/Leaflet)</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- WAI-ARIA Role: Site Footer -->
+    <footer role="contentinfo">
+        <div class="container grid-footer">
+            <div class="footer-branding">
+                <!-- Microformat Requirement 2: hCard (Contact Information) -->
+                <p class="vcard">
+                    <span class="fn org">Dhamrai Clay Heritage Project</span>
+                    <br>
+                    <span class="adr">Kakran Kumar Para, Nayarhat, <span class="locality">Dhamrai</span>, <span class="region">Dhaka</span>, <span class="country-name">Bangladesh</span></span>
+                    <br>
+                    <span class="tel">+880 [Placeholder]</span>
+                </p>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Credits & Sources</a></li>
+                    <li><a href="#">Support the Potters</a></li>
+                </ul>
+            </div>
+            <div class="project-info">
+                <p class="project-disclaimer">
+                    <small>Client-Side Project 2025/26</small><br>
+                    <small>By Students for Teaching Purposes Only.</small><br>
+                    <small>Authors: [Your Group Members' Names Here]</small>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Placeholder JavaScript (identical to index.html for menu logic) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            function toggleMenu() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                navLinks.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Third-Party API Preparation: Map loading placeholder
+            function initializeMapAPI() {
+                const mapPlaceholder = document.getElementById('map-placeholder');
+                // Simulate external script loading
+                /* if (window.google && window.google.maps) {
+                    // Initialize actual map here using GEO coordinates 23.90, 90.23
+                } else {
+                    // Fallback or script injection
+                }
+                */
+            }
+
+            initializeMapAPI();
+        });
+    </script>
+</body>
+</html>
