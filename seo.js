@@ -43,5 +43,21 @@ document.addEventListener("DOMContentLoaded", function () {
   slider.addEventListener("touchstart", () => clearInterval(auto), {passive:true});
   slider.addEventListener("touchend", () => auto = setInterval(autoSlide, 4000), {passive:true});
 });
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.querySelector(".menu-toggle");
+  const nav = document.getElementById("main-menu-list");
+  if (!btn || !nav) return;
+
+  btn.addEventListener("click", function () {
+    const expanded = this.getAttribute("aria-expanded") === "true";
+    this.setAttribute("aria-expanded", String(!expanded));
+    nav.classList.toggle("active");
+  });
+});
+</script>
+
+
 </script>
 
