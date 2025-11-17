@@ -7,20 +7,12 @@
     <!-- Technical SEO & Accessibility preparation -->
     <meta name="description" content="Discover the age-old tradition and resilient community of the Kumars (potters) in Dhamrai, Bangladesh. Explore their crafts, lifestyle, and heritage.">
     <link rel="canonical" href="[YOUR_PROJECT_DOMAIN]/index.html">
-
-<!-- Responsive sheet link -->
-    <link rel="stylesheet" href="responsive.css">
-
-
     
     <!-- Microformat Prep: Using hCard for the regional entity -->
     <meta name="author" class="vcard" content="Project Team: [Author Names]">
     
     <!-- Project Requirement: Information in the header about student work -->
     <meta name="project-info" content="This client-side web presentation is a student group project for teaching purposes only.">
-
-    <!-- SEO Script -->
-    <script src="seo.js" defer></script>
 
     <style>
         /* =================================================================== */
@@ -418,8 +410,80 @@
             color: #ccc;
         }
 
-       
+        /* =================================================================== */
+        /* 8. Media Queries (Fully Responsive Design - 3 Levels) */
+        /* =================================================================== */
 
+        /* Tablet View (600px+) */
+        @media (min-width: 600px) {
+            
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+
+            /* Grid: Footer layout starts spreading out */
+            .grid-footer {
+                grid-template-columns: 1fr 1fr; /* Two columns */
+                text-align: left;
+            }
+            .project-info {
+                text-align: right;
+                margin-top: 0;
+            }
+            
+            /* Flex: Featured cards move to two columns */
+            .feature-card {
+                flex: 1 1 calc(50% - var(--spacing-unit)); /* 2 columns */
+            }
+
+            /* Grid: Process section in 2 columns */
+            .grid-process-steps {
+                grid-template-columns: 1fr 1fr; 
+            }
+        }
+
+        /* Desktop View (1024px+) */
+        @media (min-width: 1024px) {
+
+            h1 { font-size: 4rem; }
+            
+            /* Grid: Header is now a horizontal FLEX structure (using GRID for columns) */
+            .grid-header {
+                grid-template-columns: auto 1fr auto;
+                justify-content: space-between;
+            }
+            
+            /* Navigation: Show full desktop menu */
+            .menu-toggle {
+                display: none; 
+            }
+            nav {
+                display: flex;
+                justify-content: flex-end; /* Push links to the right */
+            }
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background: none;
+                box-shadow: none;
+            }
+            .nav-links li a {
+                padding: 0.5rem 1rem;
+            }
+
+            /* Flex: Featured cards move to three columns */
+            .feature-card {
+                flex: 1 1 calc(33.333% - var(--spacing-unit)); /* 3 columns */
+            }
+
+            /* Grid: Footer layout in 3 columns */
+            .grid-footer {
+                grid-template-columns: 1fr 2fr 1fr; 
+            }
+            .footer-nav ul {
+                justify-content: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
@@ -721,7 +785,3 @@
 </body>
 
 </html>
-
-
-
-
