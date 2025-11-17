@@ -150,11 +150,7 @@
         /* 3. Header & Navigation (FLEX-based) */
         /* =================================================================== */
 
-        header .grid-header {
-    display: grid;
-    grid-template-columns: 1fr auto;   /* Mobile: logo left, menu right */
-    align-items: center;
-}
+      
 
         
         header {
@@ -170,14 +166,19 @@
         .grid-header {
             /* Mobile Default: Logo on one row, Menu button on another (auto-flow) */
             grid-template-columns: 1fr auto; 
+            align-items: center;
+             display: grid;
         }
 
         .logo a {
             color: var(--color-off-white);
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-decoration: none;
-            transition: opacity 0.3s;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    display: flex; /* Use flex to ensure vertical centering if needed */
+    align-items: center;
+    height: 100%
         }
         .logo a:hover { opacity: 0.9; }
 
@@ -209,11 +210,15 @@
 
         .menu-toggle {
             background: none;
-            border: none;
-            color: var(--color-off-white);
-            font-size: 1.2rem;
-            padding: 0.5rem;
-            cursor: pointer;
+    border: none;
+    color: var(--color-off-white);
+    font-size: 1.8rem; /* Match logo font size for better visual balance */
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex; /* Use flex to center the SVG icon */
+    align-items: center;
+    justify-content: center;
+    height: 100%;
         }
 
         /* =================================================================== */
@@ -798,6 +803,7 @@
 </body>
 
 </html>
+
 
 
 
