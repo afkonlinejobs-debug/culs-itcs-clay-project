@@ -21,3 +21,27 @@ addMeta("twitter:card", "summary_large_image");
 addMeta("twitter:title", "Dhamrai Clay Heritage");
 addMeta("twitter:description", "Explore the pottery heritage of Dhamrai.");
 addMeta("twitter:image", "https://placehold.co/1200x630");
+
+/*Slider autoplay*/
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.querySelector(".slider-wrapper");
+  const slides = document.querySelectorAll(".slide");
+  if (!slider || !slides.length) return;
+
+  let index = 0;
+  let auto = setInterval(autoSlide, 4000);
+
+  function autoSlide() {
+    index = (index + 1) % slides.length;
+    slider.scrollTo({ left: slides[index].offsetLeft, behavior: "smooth" });
+  }
+
+  /* Pause on hover / touch for accessibility */
+  slider.addEventListener("mouseenter", () => clearInterval(auto));
+  slider.addEventListener("mouseleave", () => auto = setInterval(autoSlide, 4000));
+  slider.addEventListener("touchstart", () => clearInterval(auto), {passive:true});
+  slider.addEventListener("touchend", () => auto = setInterval(autoSlide, 4000), {passive:true});
+});
+</script>
+
