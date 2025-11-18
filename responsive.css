@@ -2,8 +2,8 @@
         /* 8. Media Queries (Fully Responsive Design - 3 Levels) */
         /* =================================================================== */
 
-        /* Tablet View (600px+) */
-/*        @media (min-width: 600px) {
+         Tablet View (600px+) */
+       @media (min-width: 600px) {
             
             h1 { font-size: 3.5rem;
                text-align: left;
@@ -20,17 +20,17 @@
             }
 
             /* Grid: Footer layout starts spreading out */
-         /*   .grid-footer {
+            .grid-footer {
                 grid-template-columns: 1fr 1fr; /* Two columns */
-           /*     text-align: left;
+                text-align: left;
             }
             .project-info {
                 text-align: right;
                 margin-top: 0;
             }
             
-            /* Flex: Featured cards move to two columns */
-           /* .feature-card {
+             Flex: Featured cards move to two columns */
+            .feature-card {
                 flex: 1 1 calc(50% - var(--spacing-unit)); /* 2 columns */
             }
 
